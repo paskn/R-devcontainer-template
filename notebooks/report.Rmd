@@ -1,0 +1,66 @@
+---
+title: "Results report"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      dev = 'svg')
+options(tidyverse.quiet = TRUE)
+```
+
+Project pipeline:
+
+```{r pipeline_vis, message=FALSE}
+library(kableExtra)
+library(plotly)
+library(tidyr)
+library(targets)
+
+tar_visnetwork()
+```
+
+Analysis parameters:
+
+```{r list_params, result = 'asis', echo = FALSE}
+data.frame(
+  "Random seed used" = tar_read(seed) |> paste(),
+  "Model specification" = tar_read(model_spec)@call |> format() |>
+                                             paste(collapse=""),
+  "Effect of interest" = tar_read(effect_name),
+  "Investigated effect range" = summary(tar_read(effect_range)) |> paste(collapse=" "),
+  "Number of simulations per value of effect" = tar_read(nsims) |> paste(),
+  "Test type" = tar_read(test_type)
+) |>
+  pivot_longer(cols = everything(),
+               names_to = "Parameter") |>
+  kbl() |>
+  kable_styling('hover')
+ 
+```
+
+Analysis summary:
+
+```{r sim_results}
+summary(tar_read(analysis))
+``` 
+
+Visualize analysis results:
+
+```{r plot_results}
+tar_load(record)
+
+record
+
+ggsave("./figs/plot.pdf",
+         width = 30, height = 20, units = "cm")
+```
+
+```{r}
+ggplotly(record)
+```
+
+```{r}
+sessionInfo()
+```

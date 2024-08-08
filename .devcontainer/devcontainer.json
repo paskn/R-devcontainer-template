@@ -1,0 +1,28 @@
+{
+  "name": "Platform-compliance_data-power",
+  "image": "ghcr.io/rocker-org/devcontainer/r-ver:4.4",
+
+  // "build": {
+  //   "dockerfile": "Dockerfile",
+  // use context to access files outside ./devcontainer
+  //   "context": ".."
+  // },
+
+  // stop docker from spamming in your channels
+  "containerEnv": { "DOCKER_CLI_HINTS": "false" },
+
+  "features": {
+    // get dependecies for some packages
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+	  "packages": "cmake,libudunits2-dev,libxtst6,libxt6,libmagick++-dev,librsvg2-dev"
+	},
+    // get renv and LSP installed
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+	  "packages": "github::rstudio/renv,languageserver"
+	}
+  },
+
+  // restore dependecies in renv.loc and repair if LSP wasn't in the loc-file
+  "postCreateCommand": "R -e 'renv::restore()' && R -e 'renv::repair()'"
+   
+}
