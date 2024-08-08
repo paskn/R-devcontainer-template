@@ -14,7 +14,7 @@
   "features": {
     // get dependecies for some packages
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-	  "packages": "cmake,libudunits2-dev,libxtst6,libxt6,libmagick++-dev,librsvg2-dev"
+	  "packages": "cmake,libglpk-dev,libudunits2-dev,libxtst6,libxt6,libmagick++-dev,librsvg2-dev"
 	},
     // get renv and LSP installed
     "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
