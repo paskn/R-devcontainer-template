@@ -24,4 +24,5 @@ In Emacs, find-file in the container using
 [docker.el](https://github.com/Silex/docker.el/) and TRAMP. Edit as
 usual with [ESS](https://github.com/emacs-ess/ESS).
 
-The template should also work with VS Code without DevPod, but I did not test it.
+The template should also work with VS Code without DevPod, but I did
+not test it. It works in GitHub Codespaces.
