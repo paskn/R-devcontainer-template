@@ -46,3 +46,25 @@ not test it. It works in GitHub Codespaces.
 - Install packages with `renv::install()`.
 - Periodically run `renv::status()` and `renv::snapshot()`.
 
+# Remote computing with DevPod
+
+To offload computing a pipeline to a remote machine with DevPod:
+
+1. With DevPod, spawn a new workspace with your provider. Make sure to
+   turn-off inactivity timeout in provider settings.
+2. Use `nohup` to run the pipeline:
+
+```sh
+nohup R -e "targets::tar_make()" &
+```
+
+Now, `nohup` will log the pipeline into nohup.out file. You can track
+how it updates with `tail -f nohup.out`.
+
+`jobs` will print out the status of your pipeline. Now you can logout/exit.
+
+Note: With DevPod you cannot change timeout for an already spawned
+workspace (valid for version 0.5.18 on Aug 9 2024). DevPod will not
+consider a running `nohup` command as an activity and will shutdown
+your workspace after you logout.
+
