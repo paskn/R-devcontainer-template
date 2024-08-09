@@ -26,3 +26,23 @@ usual with [ESS](https://github.com/emacs-ess/ESS).
 
 The template should also work with VS Code without DevPod, but I did
 not test it. It works in GitHub Codespaces.
+
+# Checklists
+
+## Before building the workspace
+1. Look at `./.devcontainer/devcontainer.json`:
+
+    - Do you need to change R version?
+    - Do you need `renv` to install packages listed in the template `renv.lock`?
+    - Do you want to keep the template `postCreateCommand`?
+    - If you want to use [Quarto](https://quarto.org/), you need to
+      add it as a [feature](https://github.com/rocker-org/devcontainer-features/tree/main/src/quarto-cli).
+
+2. Did you configure your (remote) provider or you want to run it locally? If remote:
+    - Check the type of machine DevPod will request. Is it cheap/good? 
+    - Is the timeout setting set properly?
+    
+## During the session
+- Install packages with `renv::install()`.
+- Periodically run `renv::status()` and `renv::snapshot()`.
+
