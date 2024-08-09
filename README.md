@@ -68,3 +68,8 @@ workspace (valid for version 0.5.18 on Aug 9 2024). DevPod will not
 consider a running `nohup` command as an activity and will shutdown
 your workspace after you logout.
 
+# Resources
+
+- [The {targets} R package user manual](https://books.ropensci.org/targets/). Sections 13 and 14
+  about performance and distributed computing.
+- [rocker-org/devcontainer-features/](https://github.com/rocker-org/devcontainer-features/tree/main/src/quarto-cli). README and NOTES files in `src` are especially useful.
