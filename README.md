@@ -71,5 +71,6 @@ your workspace after you logout.
 # Resources
 
 - [The {targets} R package user manual](https://books.ropensci.org/targets/). Sections 13 and 14
-  about performance and distributed computing.
+  about performance and distributed computing. 
+- [Set up GitHub Actions to run a targets pipeline](https://docs.ropensci.org/targets/reference/tar_github_actions.html)
 - [rocker-org/devcontainer-features/](https://github.com/rocker-org/devcontainer-features/tree/main/src/quarto-cli). README and NOTES files in `src` are especially useful.
