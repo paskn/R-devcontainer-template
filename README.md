@@ -61,7 +61,9 @@ nohup R -e "targets::tar_make()" &
 Now, `nohup` will log the pipeline into nohup.out file. You can track
 how it updates with `tail -f nohup.out`.
 
-`jobs` will print out the status of your pipeline. Now you can logout/exit.
+`jobs` will print out the status of your pipeline. Now you can
+logout/exit. `scp` can transfer files between remote and local
+machines. 
 
 Note: With DevPod you cannot change timeout for an already spawned
 workspace (valid for version 0.5.18 on Aug 9 2024). DevPod will not
