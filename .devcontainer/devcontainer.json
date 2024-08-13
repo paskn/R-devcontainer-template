@@ -14,15 +14,17 @@
   "features": {
     // get dependecies for some packages
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-	  "packages": "cmake,libglpk-dev,libudunits2-dev,libxtst6,libxt6,libmagick++-dev,librsvg2-dev"
+	  "packages": "cmake,libglpk-dev,libfontconfig1-dev,libudunits2-dev,libxtst6,libxt6,libmagick++-dev,librsvg2-dev"
 	},
     // get renv and LSP installed
     "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-	  "packages": "github::rstudio/renv,languageserver"
+	  "packages": "renv"
 	}
   },
 
+  // forward httpgd
+  "appPort": "8888:8888",
+
   // restore dependecies in renv.loc and repair if LSP wasn't in the loc-file
-  "postCreateCommand": "R -e 'renv::restore()' && R -e 'renv::repair()'"
-   
+  "postCreateCommand": "R -e 'renv::restore()' && R -e 'renv::repair()'" 
 }
