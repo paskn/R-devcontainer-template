@@ -55,7 +55,7 @@ To offload computing a pipeline to a remote machine with DevPod:
 2. Use `nohup` to run the pipeline:
 
 ```sh
-nohup R -e "targets::tar_make()" &
+nohup Rscript -e "targets::tar_make()" &
 ```
 
 Now, `nohup` will log the pipeline into nohup.out file. You can track
